@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="app_settings">Settings</string>
+    <string name="title_quiz">Canada Quiz</string>
+    <string name="correct_toast">Correct!!!</string>
+    <string name="incorrect_toast">Incorrect!!!</string>
+    <string name="next_button">Next</string>
+
+
+    <string name="question_text"> Toronto is the largest city in Canada</string>
+    <string name="question_text2"> Ontario is a city in Canada </string>
+    <string name="question_text3"> New York is a city in the USA</string>
+    <string name="question_text4"> Paris is in France</string>
+    <string name="question_text5"> There are 13 provinces in Canada</string>
+
 </resources>
