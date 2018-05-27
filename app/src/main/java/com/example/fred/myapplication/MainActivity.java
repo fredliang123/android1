@@ -1,7 +1,6 @@
 package com.example.fred.myapplication;
 
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +10,15 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button mStartButton;
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
     private TextView mQuestionTextView;
+    private TextView mChoiceATextView;
+    private TextView mChoiceBTextView;
+    private TextView mChoiceCTextView;
+    private TextView mChoiceDTextView;
     private int mCurrentIndex = 0;
 
     private Handler customHandler = new Handler();
@@ -28,26 +32,41 @@ public class MainActivity extends AppCompatActivity {
             new Question(R.string.question_text5, false),
     };
 
-    private Question mCurrentQuestion = mQuestions[mCurrentIndex];
+    private Question mCurrentQuestion = mQuestions[mCurrentIndex]; // initial question
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start);
 
-
-
+        //Buttons
+        mStartButton = (Button) findViewById(R.id.btnStart);
         mFalseButton = (Button) findViewById(R.id.btnFalse);
         mTrueButton = (Button) findViewById(R.id.btnTrue);
         mNextButton = (Button) findViewById(R.id.btnNext);
+
         mQuestionTextView = (TextView) findViewById(R.id.tvQuestion);
-        mCurrentIndex =( mCurrentIndex+1)%mQuestions.length;
+
+        mChoiceATextView = (TextView) findViewById(R.id.btnA);
+        mChoiceBTextView = (TextView) findViewById(R.id.btnB);
+        mChoiceCTextView = (TextView) findViewById(R.id.btnC);
+        mChoiceDTextView = (TextView) findViewById(R.id.btnD);
+
+        //Show inital question
+        mCurrentIndex =( mCurrentIndex+1)% mQuestions.length;
         setCurrentQuestion(mCurrentIndex);
         updateQuestion();
 
+        mStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.true_or_false);
+            }
+        });
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
+            // button response
             public void onClick(View v) {
                 displayMessage(isCorrectAnswer(mCurrentQuestion, true));
             }
@@ -64,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
        mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex =( mCurrentIndex+1)%mQuestions.length;
+                mCurrentIndex =( mCurrentIndex+1)% mQuestions.length;
                 setCurrentQuestion(mCurrentIndex);
                 updateQuestion();
             }
@@ -98,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
         mQuestionTextView.setText(mCurrentQuestion.getTextQuestionId());
     }
 
+   /* mPostScoreButton.setOnClickListener(new View.OnClickListener) {
+    @Override
+    public void onClick(View v) {
+            Intent i = new Intent(MainActivity.this, ScoreActivity.class)
+        startActivity(i);
+    }
+});*/
     /*private long startTime = SystemClock.uptimeMillis();
     customHandler.postDelayed(updateTimerThread,0);
     private Runnable updateTimeThread = new Runnable() {
