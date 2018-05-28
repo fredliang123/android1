@@ -17,7 +17,7 @@
             android:id="@+id/tvQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100px"
+            android:layout_marginTop="100dp"
             android:gravity="center_horizontal"
             android:textSize="30sp"
             android:visibility="visible"
@@ -39,21 +39,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="False" />
+                android:text="@string/false_button" />
 
             <Button
                 android:id="@+id/btnTrue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="True" />
+                android:text="@string/true_button" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next" />
+            android:text="@string/next_button" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         mQuestionTextView = (TextView) findViewById(R.id.tvQuestion);
 
-        mChoiceATextView = (TextView) findViewById(R.id.btnA);
+        /*mChoiceATextView = (TextView) findViewById(R.id.btnA);
         mChoiceBTextView = (TextView) findViewById(R.id.btnB);
         mChoiceCTextView = (TextView) findViewById(R.id.btnC);
-        mChoiceDTextView = (TextView) findViewById(R.id.btnD);
+        mChoiceDTextView = (TextView) findViewById(R.id.btnD);*/
 
         //Show inital question
         mCurrentIndex =( mCurrentIndex+1)% mQuestions.length;
