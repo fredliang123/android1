@@ -17,4 +17,11 @@
     <string name="question_text4"> Paris is in France</string>
     <string name="question_text5"> There are 13 provinces in Canada</string>
 
+    <string name="question_text6"> How many states are there in USA</string>
+
+    <string name="question_text7"> How many people are there in USA</string>
+    <string name="question_text8"> How many people are there in Canada</string>
+    <string name="title_activity_start_menu">Start</string>
+
+
 </resources>
