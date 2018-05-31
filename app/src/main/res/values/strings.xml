@@ -5,10 +5,14 @@
     <string name="correct_toast">Correct!!!</string>
     <string name="incorrect_toast">Incorrect!!!</string>
 
+    <string name="info_text">Tap the correct answer! Try and get the highest score possible!</string>
+
     <string name="start_button">Start</string>
     <string name="next_button">Next</string>
     <string name="false_button">False</string>
     <string name="true_button">True</string>
+    <string name="instructions_button">Instructions</string>
+    <string name="back_button">Back</string>
 
 
     <string name="question_text"> Toronto is the largest city in Canada</string>
@@ -18,9 +22,9 @@
     <string name="question_text5"> There are 13 provinces in Canada</string>
 
     <string name="question_text6"> How many states are there in USA</string>
-
     <string name="question_text7"> How many people are there in USA</string>
     <string name="question_text8"> How many people are there in Canada</string>
+
     <string name="title_activity_start_menu">Start</string>
 
 

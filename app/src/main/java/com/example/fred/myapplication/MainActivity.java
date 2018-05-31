@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
 
     private TextView mQuestionTextView;
     private TextView mTextTimer;
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         //Buttons
         mFalseButton = (Button) findViewById(R.id.btnFalse);
         mTrueButton = (Button) findViewById(R.id.btnTrue);
-        mNextButton = (Button) findViewById(R.id.btnNext);
 
 
 
@@ -90,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             // button response
             public void onClick(View v) {
+                next();
                 displayMessage(isCorrectAnswer(mCurrentQuestion, true));
             }
         });
@@ -98,26 +97,20 @@ public class MainActivity extends AppCompatActivity {
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                next();
                 displayMessage(isCorrectAnswer(mCurrentQuestion, false));
             }
         });
 
-       mNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTime = SystemClock.uptimeMillis();
 
-                mCurrentIndex =( mCurrentIndex+1)% mQuestions.length;
-                setCurrentQuestion(mCurrentIndex);
-                updateQuestion();
-                if (mCurrentIndex==5){
-                    setContentView(R.layout.multiple_choice2);
-                }
-            }
-        });
-
-
-
+    }
+    private  void next(){
+        mCurrentIndex =( mCurrentIndex+1)% mQuestions.length;
+        setCurrentQuestion(mCurrentIndex);
+        updateQuestion();
+        if (mCurrentIndex==5){
+            setContentView(R.layout.multiple_choice);
+        }
     }
 
     private void displayMessage(boolean isCorrect) {
