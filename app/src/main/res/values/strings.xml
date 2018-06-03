@@ -8,12 +8,16 @@
     <string name="info_text">Tap the correct answer!</string>
     <string name="info_text2">Try and get the highest score possible!</string>
 
+    <string name="game_over_text">GameOver!</string>
+
     <string name="start_button">Start</string>
     <string name="next_button">Next</string>
     <string name="false_button">False</string>
     <string name="true_button">True</string>
     <string name="instructions_button">Instructions</string>
     <string name="back_button">Back</string>
+    <string name="NG_button">New Game</string>
+    <string name="Quit_button">Quit</string>
 
 
     <string name="question_text"> Toronto is the largest city in Canada</string>
@@ -21,6 +25,12 @@
     <string name="question_text3"> Population of Ontario is over 20 million</string>
     <string name="question_text4"> London is in Ontario</string>
     <string name="question_text5"> There are 13 provinces in Canada</string>
+    <string name="question_text6"> Canada has 11% of the world’s renewable water supply</string>
+    <string name="question_text7"> The highest mountain in Canada is Mount Logan, 5959 metres</string>
+    <string name="question_text8"> The median age of Canadians is 30 years</string>
+    <string name="question_text9"> 33% of Canadians are daily smokers</string>
+    <string name="question_text10"> Canadians generate 640 kilograms per person per year of waste</string>
+
     <string name="blank"> </string>
 
     <string name="title_activity_start_menu">Start</string>

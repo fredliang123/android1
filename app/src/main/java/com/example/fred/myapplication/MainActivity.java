@@ -2,12 +2,12 @@ package com.example.fred.myapplication;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,16 +15,13 @@ public class MainActivity extends AppCompatActivity {
 
     MediaPlayer MainSong;
 
-    private Button mTrueButton, mFalseButton;
-
-    private TextView mQuestionTextView, mTextTimer, score;
-
+    private Button mTrueButton;
+    private Button mFalseButton;
+    private TextView mQuestionTextView;
+    private TextView score;
     private int mScore;
     private int mCurrentIndex = 0;
-
-    private Handler customHandler = new Handler();
-
-    private long startTime;
+    private Chronometer mTimer;
 
     private QuestionTF[] mQuestionsTF = new QuestionTF[]{
             //true or false
@@ -33,28 +30,16 @@ public class MainActivity extends AppCompatActivity {
             new QuestionTF(R.string.question_text3, false),
             new QuestionTF(R.string.question_text4, true),
             new QuestionTF(R.string.question_text5, false),
+            new QuestionTF(R.string.question_text6, false),
+            new QuestionTF(R.string.question_text7, true),
+            new QuestionTF(R.string.question_text8, false),
+            new QuestionTF(R.string.question_text9, false),
+            new QuestionTF(R.string.question_text10, true),
             new QuestionTF(R.string.blank, false),
     };
 
     private QuestionTF mCurrentQuestion = mQuestionsTF[mCurrentIndex]; // initial question
 
-    private Runnable updateTimeThread = new Runnable() {
-
-        public void run() {
-            long timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
-
-            int secs = (int) (timeInMilliseconds / 1000);
-            int mins = secs / 60;
-            secs = secs % 60;
-            int milliseconds = (int) (timeInMilliseconds % 1000);
-
-            mTextTimer.setText("" + mins + ":"
-                    + String.format("%02d", secs) + ":"
-                    + String.format("%03d", milliseconds));
-            customHandler.postDelayed(this, 0);
-            customHandler.removeCallbacks(updateTimeThread);
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +52,13 @@ public class MainActivity extends AppCompatActivity {
         mFalseButton = (Button) findViewById(R.id.btnFalse);
         mTrueButton = (Button) findViewById(R.id.btnTrue);
 
-        customHandler.postDelayed(updateTimeThread, 0);
 
         mQuestionTextView = (TextView) findViewById(R.id.tvQuestion);
-        mTextTimer = (TextView) findViewById(R.id.tvTimer);
+        mTimer =  findViewById(R.id.tvTimer);
+        //sets timer at zero on click
+        mTimer.setBase(SystemClock.elapsedRealtime());
+        mTimer.start();
+
         score = (TextView) findViewById(R.id.tvScore);
 
         //Show inital question
@@ -102,11 +90,12 @@ public class MainActivity extends AppCompatActivity {
         mCurrentIndex = (mCurrentIndex + 1) % mQuestionsTF.length;
         setCurrentQuestion(mCurrentIndex);
         updateQuestion();
-        if (mCurrentIndex >= 5) {
+        if (mCurrentIndex >= 10) {
             MainSong.stop();
-            Intent i = new Intent(MainActivity.this, MultipleChoice.class);
+            Intent i = new Intent(MainActivity.this.getBaseContext(), MultipleChoice.class);
+            i.putExtra("time", (int)  mTimer.getBase());
             i.putExtra("score", mScore);
-            startActivity(i);
+            startActivityForResult(i,0);
         }
     }
 
