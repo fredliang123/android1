@@ -8,7 +8,7 @@
     <string name="info_text">Tap the correct answer!</string>
     <string name="info_text2">Try and get the highest score possible!</string>
 
-    <string name="game_over_text">GameOver!</string>
+    <string name="game_over_text">Game Over!</string>
 
     <string name="start_button">Start</string>
     <string name="next_button">Next</string>
